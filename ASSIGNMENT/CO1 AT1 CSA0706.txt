@@ -1,0 +1,315 @@
+1. File Transfer using Transport and Data Link Layer
+
+Given:
+
+File size = 150 MB = 150 × 1,000,000 = 150,000,000 bytes
+Segment size = 1500 bytes
+Data Link overhead = 40 bytes/frame
+Bandwidth = 50 Mbps
+Calculation
+
+Number of segments (frames)
+
+= 150,000,000 ÷ 1500
+
+= 100,000 segments
+
+Total frames transmitted
+
+= 100,000 frames
+
+Total Data Link overhead
+
+= 100,000 × 40
+
+= 4,000,000 bytes (4 MB)
+
+Total data transmitted
+
+= 150 MB + 4 MB
+
+= 154 MB
+
+Convert to bits:
+
+154 × 8 = 1232 Mb
+
+Transmission Time
+
+= 1232 ÷ 50
+
+= 24.64 seconds
+
+Explanation
+
+Transport Layer divides the file into segments, provides sequencing, acknowledgements, error recovery, and reliable delivery.
+Data Link Layer creates frames, detects errors using CRC, and controls communication between directly connected devices.
+
+2. Sliding Window Protocol
+
+Given
+
+Window size = 6
+Total frames = 48
+Calculation
+
+Windows required
+
+= 48 ÷ 6
+
+= 8 windows
+
+One frame lost in each window
+
+Retransmissions
+
+= 8 frames
+
+Explanation
+
+Flow control prevents the sender from overwhelming the receiver by limiting the number of unacknowledged frames. This improves efficiency and reduces congestion.
+
+
+3. IP Fragmentation
+
+Given
+
+Packet size = 12,000 bytes
+MTU = 1500 bytes
+IP Header = 20 bytes
+
+Payload per fragment
+
+= 1500 − 20
+
+= 1480 bytes
+
+Calculation
+
+Fragments
+
+= Ceiling(12000 ÷ 1480)
+
+= 9 fragments
+
+Header overhead
+
+= 9 × 20
+
+= 180 bytes
+
+Explanation
+
+The Network Layer fragments packets when needed. Each fragment carries its own header, and the destination host reassembles them using identification, offset, and flag fields.
+
+
+4. Sliding Window Protocol
+
+Calculation
+Windows = 48 ÷ 6 = 8
+Retransmissions = 8
+Explanation
+
+Flow control synchronizes sender and receiver speeds, reducing packet loss and improving network utilization.
+
+
+5. Session Layer Synchronization
+
+Given
+
+File = 600 MB
+Checkpoint every 60 MB
+Failure after 390 MB
+Calculation
+
+Checkpoints before failure
+
+= 390 ÷ 60
+
+= 6 checkpoints
+
+Last checkpoint
+
+= 360 MB
+
+Retransmission required
+
+= 390 − 360
+
+= 30 MB
+
+Explanation
+
+Synchronization checkpoints allow communication to resume from the last saved point instead of restarting the entire transfer, saving bandwidth and time.
+
+
+6. Presentation Layer Compression and Encryption
+
+Given
+
+Original file = 900 MB
+Compression = 40%
+Encryption overhead = 5%
+Calculation
+
+Compressed size
+
+= 900 × 60%
+
+= 540 MB
+
+Encrypted size
+
+= 540 × 1.05
+
+= 567 MB
+
+Reduction
+
+= ((900 − 567) ÷ 900) × 100
+
+= 37% reduction
+
+Explanation
+
+The Presentation Layer compresses data to reduce transmission size and encrypts data to ensure confidentiality and secure communication.
+
+
+7. FTP Data Transfer
+
+Given
+
+Data = 3 GB = 3000 MB
+Request size = 3 MB
+Throughput = 120 Mbps
+Calculation
+
+Requests
+
+= 3000 ÷ 3
+
+= 1000 requests
+
+Convert to bits
+
+3 GB = 24,000 Mb
+
+Transmission time
+
+= 24,000 ÷ 120
+
+= 200 seconds
+
+Explanation
+
+The Application Layer provides user services like FTP, manages file transfer, authentication, and error reporting.
+
+
+8. End-to-End Delay
+
+Given
+Application = 4 ms
+Transport = 3 ms
+Network = 5 ms
+Data Link = 2 ms
+Physical = 1 ms
+Propagation = 18 ms
+Transmission = 12 ms
+Calculation
+
+Total Delay
+
+= 4 + 3 + 5 + 2 + 1 + 18 + 12
+
+= 45 ms
+
+Explanation
+
+Each OSI layer performs specific functions such as data formatting, reliability, routing, framing, and signal transmission, contributing to the total communication delay.
+
+
+9. Network Efficiency
+
+Given
+
+Useful data = 80 MB = 80,000,000 bytes
+Frame size = 1600 bytes
+Overhead = 80 bytes
+
+Useful data/frame
+
+= 1600 − 80
+
+= 1520 bytes
+
+Calculation
+
+Frames
+
+= 80,000,000 ÷ 1520
+
+≈ 52,632 frames
+
+Total overhead
+
+= 52,632 × 80
+
+≈ 4,210,560 bytes (4.21 MB)
+
+Efficiency
+
+= (1520 ÷ 1600) × 100
+
+= 95%
+
+Explanation
+
+Protocol overhead consumes bandwidth. Higher overhead reduces transmission efficiency and increases network traffic.
+
+
+10. Healthcare IoT Data Transfer
+
+Given
+
+Original file = 240 MB
+Compression = 30%
+Segment size = 1400 bytes
+Data Link overhead = 60 bytes
+Calculation
+
+Compressed size
+
+= 240 × 70%
+
+= 168 MB
+
+Compressed bytes
+
+= 168,000,000 bytes
+
+Segments
+
+= 168,000,000 ÷ 1400
+
+= 120,000 segments
+
+Protocol overhead
+
+= 120,000 × 60
+
+= 7,200,000 bytes (7.2 MB)
+
+Final transmitted data
+
+= 168 MB + 7.2 MB
+
+= 175.2 MB
+
+Explanation
+
+Presentation Layer: Compresses and secures data.
+Transport Layer: Segments data and ensures reliable delivery.
+Data Link Layer: Adds frame headers/trailers for error detection.
+Physical Layer: Transmits the final bit stream over the communication medium.
+
+These layers work together to provide efficient, secure, and reliable communication.
